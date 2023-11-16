@@ -30,10 +30,20 @@ El presente repositorio contiene el desarrollo del parcial practico de APIs - MI
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Node Version
+```bash
+$ v18.17.0
+```
+
 ## Installation
 
 ```bash
 $ npm install
+```
+## Build app
+
+```bash
+$ npm run build
 ```
 
 ## Running the app
