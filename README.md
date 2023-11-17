@@ -82,6 +82,8 @@ $ npm run test:cov
 nest g mo member
 nest g cl member/member.entity --no-spec
 nest g s member 
+nest g co member --no-spec
+nest g cl member/member.dto --no-spec
 ```
 
 ## Support
