@@ -25,6 +25,9 @@ export class ClubService {
     }
 
     async create(club: ClubEntity): Promise<ClubEntity> {
+        if (club.description && club.description.length > 100) {
+            throw new BusinessLogicException('Description exceeds the maximum allowed characters', BusinessError.UNPROCESSABLE_ENTITY);
+        }
         return await this.clubRepository.save(club);
     }
 
@@ -32,6 +35,9 @@ export class ClubService {
         const persistedClub: ClubEntity = await this.clubRepository.findOne({ where: { id } });
         if (!persistedClub) {
             throw new BusinessLogicException("The club with the given id was not found", BusinessError.NOT_FOUND);
+        }
+        if (club.description && club.description.length > 100) {
+            throw new BusinessLogicException('Description exceeds the maximum allowed characters', BusinessError.UNPROCESSABLE_ENTITY);
         }
         return await this.clubRepository.save({ ...persistedClub, ...club });
     }

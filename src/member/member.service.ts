@@ -26,6 +26,9 @@ export class MemberService {
   }
 
   async create(member: MemberEntity): Promise<MemberEntity> {
+    if (!member.email || !member.email.includes('@')) {
+      throw new BusinessLogicException('Invalid email address', BusinessError.UNPROCESSABLE_ENTITY);
+    }
     return await this.memberRepository.save(member);
   }
 
@@ -33,6 +36,9 @@ export class MemberService {
     const persistedMember: MemberEntity = await this.memberRepository.findOne({ where: { id } });
     if (!persistedMember) {
       throw new BusinessLogicException("The member with the given id was not found", BusinessError.NOT_FOUND);
+    }
+    if (member.email && !member.email.includes('@')) {
+      throw new BusinessLogicException('Invalid email address', BusinessError.UNPROCESSABLE_ENTITY);
     }
     return await this.memberRepository.save({ ...persistedMember, ...member });
   }
