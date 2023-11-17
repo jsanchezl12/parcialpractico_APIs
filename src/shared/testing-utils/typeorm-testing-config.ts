@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ClubEntity } from 'src/club/club.entity';
-import { MemberEntity } from 'src/member/member.entity';
+import { ClubEntity } from '../../club/club.entity';
+import { MemberEntity } from '../../member/member.entity';
 
 export const TypeOrmTestingConfig = () => [
   TypeOrmModule.forRoot({
