@@ -80,7 +80,7 @@ describe('MemberService', () => {
   it('update should modify a member', async () => {
     const member: MemberEntity = membersList[0];
     member.username = "New username";
-    member.email = "New email";
+    member.email = faker.internet.email();
 
     const updatedMember: MemberEntity = await service.update(member.id, member);
     expect(updatedMember).not.toBeNull();

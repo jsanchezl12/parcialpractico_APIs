@@ -34,7 +34,7 @@ describe('ClubService', () => {
         name: faker.company.name(),
         foundationDate: faker.date.past().toISOString(),
         image: faker.image.url(),
-        description: faker.lorem.paragraph(),
+        description: faker.lorem.paragraph().slice(0, 100),
       })
       clubsList.push(club);
     }
@@ -69,7 +69,7 @@ describe('ClubService', () => {
       name: faker.company.name(),
       foundationDate: faker.date.past().toISOString(),
       image: faker.image.url(),
-      description: faker.lorem.paragraph(),
+      description: faker.lorem.paragraph().slice(0, 100),
       members: []
     }
     const newClub: ClubEntity = await service.create(club);
